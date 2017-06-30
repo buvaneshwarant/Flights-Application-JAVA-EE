@@ -4,7 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>World Adventure Airlines</title>
+
+<link rel="stylesheet" href="resources/css/theme.css" />
+
+
 </head>
 <body>
 
@@ -24,17 +29,17 @@
 				</div>
 
 				<div class="inputField">
-					<label form="last-name"class"inputlabel"> First Name: </label> <input
+					<label form="last-name"class"inputlabel"> Last Name: </label> <input
 						name="last-name" type="test"></input>
 				</div>
 
 				<div class="inputField">
-					<label form="dob"class"inputlabel"> First Name: </label> <input
+					<label form="dob"class"inputlabel"> DOB Name: </label> <input
 						name="dob" type="test"></input>
 				</div>
 
 				<div class="inputField">
-					<label form="gender"class"inputlabel"> First Name: </label> <select
+					<label form="gender"class"inputlabel"> Gender: </label> <select
 						name="gender">
 						<option value="Male">Male</option>
 						<option vlaue="Female">Female</option>
