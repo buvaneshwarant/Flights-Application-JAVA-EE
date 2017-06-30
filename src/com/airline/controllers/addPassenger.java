@@ -29,7 +29,7 @@ public class addPassenger extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/addPassenger.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_Passenger.jsp");
 		
 		view.forward(request, response);
 		
@@ -39,8 +39,9 @@ public class addPassenger extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String firstName = request.getParameter("first-name");
+		System.out.println("firstName" + firstName);
+		
 	}
 
 }

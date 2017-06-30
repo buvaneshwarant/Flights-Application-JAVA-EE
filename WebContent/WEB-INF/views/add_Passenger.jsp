@@ -21,40 +21,38 @@
 
 			<legend>Passenger details</legend>
 
-			<form action="AddPassenger" method="post">
+			<form action="addPassenger" method="post">
 
 				<div class="inputField">
-					<label form="first-name"class"inputlabel"> First Name: </label> <input
-						name="first-name" type="test"></input>
+					<label for="first-name" class="inputlabel"> First Name: </label> <input
+						name="first-name" type="text"></input>
 				</div>
 
 				<div class="inputField">
-					<label form="last-name"class"inputlabel"> Last Name: </label> <input
-						name="last-name" type="test"></input>
+					<label for="last-name" class="inputlabel"> Last Name: </label> 
+					<input name="last-name" type="text"></input>
 				</div>
 
 				<div class="inputField">
-					<label form="dob"class"inputlabel"> DOB Name: </label> <input
-						name="dob" type="test"></input>
+					<label for="dob" class="inputlabel"> DOB Name: </label> 
+					<input name="dob" type="text"></input>
 				</div>
 
 				<div class="inputField">
-					<label form="gender"class"inputlabel"> Gender: </label> <select
-						name="gender">
+					<label for="gender" class="inputlabel"> Gender: </label> <select name="gender">
 						<option value="Male">Male</option>
-						<option vlaue="Female">Female</option>
-					</select> <input name="gender" type="test"></input>
+						<option value="Female">Female</option>
+					</select>
 				</div>
+				
+		</fieldset>
 		
-
 		<div class="inputField" id="submitField">
-			<input id="submitBtn" type="submit" value="Add new passenger">
+			<input id="submitBtn" type="submit" value="Add new passenger"></input>
 		</div>
 
 		</form>
 
-		</fieldset>
-		
 	</div>
 
 </body>
