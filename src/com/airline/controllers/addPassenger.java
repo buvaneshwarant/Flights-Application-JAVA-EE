@@ -53,9 +53,8 @@ public class addPassenger extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Passenger p = new Passenger(); 
-		
-		
+		Passenger p = new Passenger();
+
 		request.setAttribute("errors", false);
 
 		String firstName = request.getParameter("first-name");
@@ -76,7 +75,7 @@ public class addPassenger extends HttpServlet {
 			System.out.println("empty last name error");
 			request.setAttribute("error", true);
 			request.setAttribute("lastname_error", true);
-		}else {
+		} else {
 			p.setLastName(lastName);
 		}
 
@@ -103,7 +102,7 @@ public class addPassenger extends HttpServlet {
 			Date dob = cal.getTime();
 
 			System.out.println("DOB: " + dob);
-			
+
 			p.setDob(dob);
 
 		} else {
@@ -119,18 +118,22 @@ public class addPassenger extends HttpServlet {
 		if ((Boolean) request.getAttribute("errors")) {
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_Passenger.jsp");
 			view.forward(request, response);
+
 		} else {
-			
+
 			ServletContext sc = this.getServletContext();
-			
-			ArrayList<Passenger> pList =(ArrayList<Passenger>) sc.getAttribute("passengers");
-			
-			pList.add(p);
-			
-			sc.setAttribute("passengers", pList);
-			
+
+			synchronized (this) {
+				ArrayList<Passenger> pList = (ArrayList<Passenger>) sc.getAttribute("passengers");
+
+				pList.add(p);
+
+				sc.setAttribute("passengers", pList);
+
+			}
+
 			response.sendRedirect("");
-			
-		}	
+
+		}
 	}
 }
