@@ -57,17 +57,17 @@
 
 				<div class="inputField">
 					<label for="first-name" class="inputlabel"> First Name: </label> <input
-						name="first-name" type="text"></input>
+						name="first-name" type="text" value="<%= request.getAttribute("first_name") %>"></input>
 				</div>
 
 				<div class="inputField">
 					<label for="last-name" class="inputlabel"> Last Name: </label> 
-					<input name="last-name" type="text"></input>
+					<input name="last-name" type="text" value="<%= request.getAttribute("last_name") %>"></input>
 				</div>
 
 				<div class="inputField">
 					<label for="dob" class="inputlabel"> DOB Name: </label> 
-					<input name="dob" type="text"></input>
+					<input name="dob" type="text" value="<%= request.getAttribute("dob") %>"></input>
 				</div>
 
 				<div class="inputField">
