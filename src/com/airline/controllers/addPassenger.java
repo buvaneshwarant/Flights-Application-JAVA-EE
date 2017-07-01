@@ -56,7 +56,7 @@ public class addPassenger extends HttpServlet {
 		if (firstName.length() == 0) {
 			System.out.println("empty first name error");
 			request.setAttribute("error", true);
-			request.setAttribute("firstName error", true);
+			request.setAttribute("firstname_error", true);
 		}
 
 		String lastName = request.getParameter("last-name");
@@ -65,7 +65,7 @@ public class addPassenger extends HttpServlet {
 		if (lastName.length() == 0) {
 			System.out.println("empty last name error");
 			request.setAttribute("error", true);
-			request.setAttribute("lastName error", true);
+			request.setAttribute("lastname_error", true);
 		}
 
 		String dob_raw = request.getParameter("dob");
@@ -96,11 +96,20 @@ public class addPassenger extends HttpServlet {
 		} else {
 			System.out.println("Invalid DOB");
 			request.setAttribute("errors", true);
-			request.setAttribute("dob", true);
+			request.setAttribute("dob_error", true);
 		}
 
 		String gender = request.getParameter("gender");
 		System.out.println("gender : " + gender);
 
+		
+		
+		if((Boolean)request.getAttribute("errors")) {
+			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_Passenger.jsp");
+			view.forward(request, response);
+			
+		}
+		
+		
 	}
 }

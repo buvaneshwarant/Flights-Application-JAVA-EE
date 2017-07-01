@@ -17,6 +17,38 @@
 
 		<div class="title">Add a passenger</div>
 
+		<%
+			if(request.getAttribute("errors")!= null){
+
+
+		%>
+			<fieldset>
+				
+				<legend>Errors</legend>
+				
+				<ul>
+					<% if(request.getAttribute("firstname_error") != null) { %>
+						<li class="error"> First name error</li>
+					<%	} %>
+
+					<% if(request.getAttribute("lastname_error") != null) { %>
+						<li class="error"> last name error</li>
+					<%	} %>
+
+					<% if(request.getAttribute("dob_error") != null) { %>
+						<li class="error"> date format error</li>
+					<%	} %>
+
+				</ul>
+
+				</fieldset>
+
+		<%
+			}
+
+			%>
+
+
 		<fieldset>
 
 			<legend>Passenger details</legend>
