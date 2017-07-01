@@ -1,6 +1,7 @@
 package com.airline.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -12,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.airline.models.Gender;
+import com.airline.models.Passenger;
 
 /**
  * Servlet implementation class addPassenger
@@ -47,9 +51,12 @@ public class addPassenger extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		Passenger p = new Passenger(); 
+		
 		
 		request.setAttribute("errors", false);
-		
+
 		String firstName = request.getParameter("first-name");
 		System.out.println("first name: " + firstName);
 
@@ -57,6 +64,8 @@ public class addPassenger extends HttpServlet {
 			System.out.println("empty first name error");
 			request.setAttribute("error", true);
 			request.setAttribute("firstname_error", true);
+		} else {
+			p.setFirstName(firstName);
 		}
 
 		String lastName = request.getParameter("last-name");
@@ -66,6 +75,8 @@ public class addPassenger extends HttpServlet {
 			System.out.println("empty last name error");
 			request.setAttribute("error", true);
 			request.setAttribute("lastname_error", true);
+		}else {
+			p.setLastName(lastName);
 		}
 
 		String dob_raw = request.getParameter("dob");
@@ -88,11 +99,12 @@ public class addPassenger extends HttpServlet {
 			cal.set(Calendar.MONTH, Integer.parseInt(month));
 			cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
 
-			
 			Date dob = cal.getTime();
-			
+
 			System.out.println("DOB: " + dob);
 			
+			p.setDob(dob);
+
 		} else {
 			System.out.println("Invalid DOB");
 			request.setAttribute("errors", true);
@@ -101,13 +113,17 @@ public class addPassenger extends HttpServlet {
 
 		String gender = request.getParameter("gender");
 		System.out.println("gender : " + gender);
+		p.setGender(Gender.valueOf(gender));
 
-		
-		
-		if((Boolean)request.getAttribute("errors")) {
+		if ((Boolean) request.getAttribute("errors")) {
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_Passenger.jsp");
 			view.forward(request, response);
+		} else {
+			ArrayList<Passenger> pList = new ArrayList<Passenger>();
 			
+			pList.add(p);
+			
+			response.sendRedirect("");
 		}
 		
 		
